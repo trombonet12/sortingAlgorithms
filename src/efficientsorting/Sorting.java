@@ -1,6 +1,7 @@
 package efficientsorting;
 
 public class Sorting {
+
     public static int[] selectionSort(int[] arr) {
         int minim;
         int posicio;
@@ -22,7 +23,28 @@ public class Sorting {
                 arr[posicio] = aux;
             }
         }
-        
+
         return arr;
     }
+
+    public static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int index = low;
+
+        for (int i = low; i < high - 1; i++) {
+            if (arr[i] < pivot) {
+                swap(arr, index, i);
+                index++;
+            }
+        }
+        swap(arr, index, high);
+        return index;
+    }
+
+    private static void swap(int[] arr, int index, int high) {
+        int aux = arr[index];
+        arr[index] = arr[high];
+        arr[high] = aux;
+    }
+
 }
