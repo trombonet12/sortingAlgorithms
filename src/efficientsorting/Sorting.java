@@ -54,5 +54,4 @@ public class Sorting {
         arr[index] = arr[high];
         arr[high] = aux;
     }
-
 }
