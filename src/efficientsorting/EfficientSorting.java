@@ -7,6 +7,8 @@ import java.util.Random;
  */
 
 public class EfficientSorting {
+    
+    static int[] array = generateRandomArray(100);
 
     public static void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -26,16 +28,15 @@ public class EfficientSorting {
         return array;
     }
     public static void main(String[] args) {
-        int[] array = generateRandomArray(1000000);
         long time;
 
-        //printArray(array);
+        printArray(array);
 
         time = System.currentTimeMillis();
-        array = Sorting.selectionSort(array);
+        Sorting.quickSort(array,0, array.length - 1);
         time = System.currentTimeMillis() - time;
 
-        //printArray(array);
+        printArray(array);
         System.out.println(time);
     }
 }
