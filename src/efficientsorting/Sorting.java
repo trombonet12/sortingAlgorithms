@@ -26,19 +26,27 @@ public class Sorting {
 
         return arr;
     }
+    
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int split = partition(arr, low, high);
+            quickSort(arr, low, split - 1);
+            quickSort(arr, split + 1, high);
+        }
+    }
 
-    public static int partition(int[] arr, int low, int high) {
+
+    private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
-        int index = low;
-
-        for (int i = low; i < high - 1; i++) {
-            if (arr[i] < pivot) {
-                swap(arr, index, i);
-                index++;
+        int split = low;
+        for (int j = low; j <= high - 1; j++) {
+            if (arr[j] < pivot) {
+                swap(arr, split, j);
+                split++;
             }
         }
-        swap(arr, index, high);
-        return index;
+        swap(arr, split, high);
+        return split;
     }
 
     private static void swap(int[] arr, int index, int high) {
